@@ -16,7 +16,23 @@ export const onLogin = async (data: ICredentials) => {
     const { data: response } = await Axios.request(requestConfig);
     console.log(response);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
+    return { error: err.response.data.message };
+  }
+};
+
+export const onRegister = async (data: ICredentials) => {
+  const requestConfig: AxiosRequestConfig = {
+    method: "post",
+    url: process.env.REACT_APP_API_BASE_URL + "/register",
+    data
+  };
+
+  try {
+    const { data: response } = await Axios.request(requestConfig);
+    console.log(response);
+  } catch (err) {
+    // console.error(err);
     return { error: err.response.data.message };
   }
 };
