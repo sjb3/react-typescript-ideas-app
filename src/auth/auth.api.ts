@@ -5,6 +5,13 @@ export interface ICredentials {
   password: string;
 }
 
+export interface LoginApiResponse {
+  created: string;
+  id: string;
+  token: string;
+  username: string;
+}
+
 export const onLogin = async (data: ICredentials) => {
   const requestConfig: AxiosRequestConfig = {
     method: "post",
@@ -13,8 +20,14 @@ export const onLogin = async (data: ICredentials) => {
   };
 
   try {
-    const { data: response } = await Axios.request(requestConfig);
-    console.log(response);
+    const {
+      data: { token }
+    } = await Axios.request<LoginApiResponse>(requestConfig);
+    storeToken(token);
+    return {
+      token
+    };
+    // console.log(response);
   } catch (err) {
     // console.error(err);
     return { error: err.response.data.message };
@@ -35,4 +48,10 @@ export const onRegister = async (data: ICredentials) => {
     // console.error(err);
     return { error: err.response.data.message };
   }
+};
+
+export const BOUNCE_IT_TOKEN_KEY = "bounce_it_toekn_key";
+
+const storeToken = (token: string) => {
+  localStorage.setItem(BOUNCE_IT_TOKEN_KEY, token);
 };
