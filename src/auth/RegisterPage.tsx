@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-navi";
 import { AuthForm } from "./Auth.styled.component";
 import { onRegister } from "./auth.api";
 
@@ -74,6 +75,9 @@ export const RegisterPage = () => {
       />
       <button type="submit">Register</button>
       {error.length > 0 && <p>{error}</p>}
+      <p>
+        Already have an account?<Link href="/"> Login Now</Link>
+      </p>
     </AuthForm>
   );
 };
