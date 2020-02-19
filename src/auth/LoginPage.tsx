@@ -10,7 +10,10 @@ import {
   BottomContainer,
   TopSentence,
   Separator,
-  FooterParagraph
+  FooterParagraph,
+  Input,
+  FormButton,
+  ErrorParagraph
 } from "./Auth.styled.component";
 import { onLogin } from "./auth.api";
 
@@ -49,7 +52,7 @@ export const LoginPage = () => {
         <FormContainer>
           <AuthForm onSubmit={loginFunc}>
             <label htmlFor="username">Username</label>
-            <input
+            <Input
               type="text"
               placeholder="Enter Username"
               value={username}
@@ -57,8 +60,9 @@ export const LoginPage = () => {
                 setCredentials({ username: e.target.value, password })
               }
             />
+
             <label htmlFor="password">Password</label>
-            <input
+            <Input
               type="password"
               placeholder="Enter Password"
               value={password}
@@ -66,8 +70,13 @@ export const LoginPage = () => {
                 setCredentials({ username, password: e.target.value })
               }
             />
-            <button type="submit">Login</button>
-            {error.length > 0 && <p>{error}</p>}
+
+            <FormButton type="submit">Login</FormButton>
+            {error.length > 0 && (
+              <ErrorParagraph>
+                {error} <i className="material-icons">error</i>
+              </ErrorParagraph>
+            )}
           </AuthForm>
         </FormContainer>
         <BottomContainer>
