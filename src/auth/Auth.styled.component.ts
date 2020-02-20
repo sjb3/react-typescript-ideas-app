@@ -36,12 +36,18 @@ export const FormWrapper = styled.div`
   justify-content: space-between;
 `;
 
-// Containers
-export const FormContainer = styled.div``;
+// Containers // Just simply taking advantage of tags and FormWrapper
+export const TopContainer = styled.header`
+  /* flex: 1; */
+`;
 
-export const TopContainer = styled.div``;
+export const BottomContainer = styled.footer`
+  /* flex: 1; */
+`;
 
-export const BottomContainer = styled.div``;
+export const FormContainer = styled.div`
+  /* flex: 6; */
+`;
 
 export const TopSentence = styled.p`
   padding: 16px 32px;

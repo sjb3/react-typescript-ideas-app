@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-navi";
-import { AuthForm } from "./Auth.styled.component";
+import {
+  AuthForm,
+  Input,
+  FormButton,
+  FooterParagraph
+} from "./Auth.styled.component";
 import { onRegister } from "./auth.api";
+import { AuthFormWrapper } from "./AuthFormWrapper";
 
 export const RegisterPage = () => {
   const [{ username, password, repeatPassword }, setRegisterData] = useState({
@@ -30,54 +36,59 @@ export const RegisterPage = () => {
   };
 
   return (
-    <AuthForm onSubmit={registerFunc}>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        name="username"
-        placeholder="Enter Username"
-        value={username}
-        onChange={e =>
-          setRegisterData({
-            username: e.target.value,
-            password,
-            repeatPassword
-          })
-        }
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={e =>
-          setRegisterData({
-            username,
-            password: e.target.value,
-            repeatPassword
-          })
-        }
-      />
-      <label htmlFor="repeatPassword">Repeat Password</label>
-      <input
-        type="password"
-        name="repeatPassword"
-        placeholder="Repeat Password"
-        value={repeatPassword}
-        onChange={e =>
-          setRegisterData({
-            username,
-            password,
-            repeatPassword: e.target.value
-          })
-        }
-      />
-      <button type="submit">Register</button>
-      {error.length > 0 && <p>{error}</p>}
-      <p>
-        Already have an account?<Link href="/"> Login Now</Link>
-      </p>
-    </AuthForm>
+    <AuthFormWrapper
+      footer={
+        <FooterParagraph>
+          Already registered?<Link href="/login"> Login Now</Link>
+        </FooterParagraph>
+      }
+    >
+      <AuthForm onSubmit={registerFunc}>
+        <label htmlFor="username">Username</label>
+        <Input
+          type="text"
+          name="username"
+          placeholder="Enter Username"
+          value={username}
+          onChange={e =>
+            setRegisterData({
+              username: e.target.value,
+              password,
+              repeatPassword
+            })
+          }
+        />
+        <label htmlFor="password">Password</label>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={e =>
+            setRegisterData({
+              username,
+              password: e.target.value,
+              repeatPassword
+            })
+          }
+        />
+        <label htmlFor="repeatPassword">Re-Password</label>
+        <Input
+          type="password"
+          name="repeatPassword"
+          placeholder="Repeat Password"
+          value={repeatPassword}
+          onChange={e =>
+            setRegisterData({
+              username,
+              password,
+              repeatPassword: e.target.value
+            })
+          }
+        />
+        <FormButton type="submit">Register</FormButton>
+        {error.length > 0 && <p>{error}</p>}
+      </AuthForm>
+    </AuthFormWrapper>
   );
 };
