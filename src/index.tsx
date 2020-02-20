@@ -6,10 +6,13 @@ import { Router } from "react-navi";
 import { RegisterPage } from "./auth/RegisterPage";
 import { mount, route } from "navi";
 import { LoginPage } from "./auth/LoginPage";
-import { IdeasPage } from "./ideas/ideasList/ideasListPage";
-import { withAuthentication } from "./auth/authenticatedRoute";
+import { IdeasPage } from "./ideas/IdeasListPage";
+// import { withAuthentication } from "./auth/authenticatedRoute";
 import { BOUNCE_IT_TOKEN_KEY } from "./auth/auth.api";
+import { AddIdeasPage } from "./AddIdeas/AddIdeasPage";
 import { createGlobalStyle } from "styled-components";
+import { MyAccountPage } from "./MyAccount/MyAccountPage";
+// import RoutesUrls from "./utils/routesUrls";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -19,12 +22,20 @@ body {
 `;
 
 const routes = mount({
-  "/": withAuthentication(
-    route({
-      title: "Ideas",
-      view: <IdeasPage />
-    })
-  ),
+  // Protected route
+
+  // "/": withAuthentication(
+  //   route({
+  //     title: "Ideas",
+  //     view: <IdeasPage />
+  //   })
+  // ),
+
+  // Unprotected route
+  "/": route({
+    title: "Ideas",
+    view: <IdeasPage />
+  }),
   "/login": route({
     title: "Login",
     view: <LoginPage />
@@ -32,6 +43,14 @@ const routes = mount({
   "/register": route({
     title: "Register",
     view: <RegisterPage />
+  }),
+  "/add": route({
+    title: "Add",
+    view: <AddIdeasPage />
+  }),
+  "/me": route({
+    title: "My Account",
+    view: <MyAccountPage />
   })
 });
 
