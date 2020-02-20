@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AuthForm,
   AuthWrapper,
   BottomContainer,
   VioletField,
@@ -8,12 +7,8 @@ import {
   TopSentence,
   TopContainer,
   FormContainer,
-  Separator,
-  FormButton,
-  ErrorParagraph,
-  FooterParagraph
+  Separator
 } from "./Auth.styled.component";
-import { Link } from "react-navi";
 
 interface IProps {
   footer: JSX.Element;
