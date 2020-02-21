@@ -64,9 +64,13 @@ const MenuToggle = styled.span`
   }
 `;
 
-export const TopBar = () => (
+interface IProps {
+  toggleVisibility: () => void;
+}
+
+export const TopBar: React.FC<IProps> = ({ toggleVisibility }) => (
   <TopBarWrapper>
-    <MenuButton>
+    <MenuButton onClick={toggleVisibility}>
       <MenuToggle />
     </MenuButton>
 
