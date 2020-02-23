@@ -15,6 +15,9 @@ const MenuDrawerWrapper = styled.div<isVisibleDiv>`
   z-index: 12;
   transform: translateX(${props => (props.isVisible ? 0 : "-100%")});
   transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `;
 
 const MenuDrawerOverlay = styled.div<isVisibleDiv>`
@@ -35,7 +38,7 @@ interface IProps {
 }
 
 const MenuTab = styled.div`
-  display: block;
+  display: flex;
   justify-content: flex-end;
   margin: 10% 16px;
   align-items: center;
@@ -44,17 +47,52 @@ const MenuTab = styled.div`
 
 const MenuLabel = styled.label`
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 18px;
+  font-style: italic;
   font-weight: bold;
-  color: ${ColorSet.PALE_PINK};
+  color: ${ColorSet.DARK_GREY};
   cursor: pointer;
 `;
 
 const MenuIcon = styled.i`
-  color: ${ColorSet.LIME_PUNCH};
-  border: 3px solid ${ColorSet.SALMON};
-  border-radius: 50%;
-  margin-left: 8px;
+  color: ${ColorSet.DARK_GREY};
+  /* border: 3px solid ${ColorSet.SALMON};
+  border-radius: 50%; */
+  margin-left: 10%;
+  color: red;
+`;
+
+const MenuList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
+
+const MenuEntry = styled.li`
+  font-size: 1.2em;
+  font-style: italic;
+  color: ${ColorSet.DARK_GREY};
+  cursor: pointer;
+  border-bottom: 1px solid ${ColorSet.PALE_PINK};
+  padding: 8% 3%;
+
+  &:hover {
+    color: ${ColorSet.DINGY_LAVENDER};
+  }
+`;
+
+const menuLabels = [
+  "Your Ideas",
+  "Your Collections",
+  "Explore",
+  "ProfileSettings",
+  "Statistics"
+];
+
+const LogoutTab = styled(MenuTab)`
+  margin-top: auto;
+  i {
+    border: none;
+  }
 `;
 
 export const MenuDrawer: React.FC<IProps> = ({
@@ -67,6 +105,20 @@ export const MenuDrawer: React.FC<IProps> = ({
         <MenuLabel>close</MenuLabel>
         <MenuIcon className="material-icons">close</MenuIcon>
       </MenuTab>
+      <img
+        src="https://media.giphy.com/media/iipZTES2UPnTG/giphy.gif"
+        alt="Alexander_McQueen"
+        style={{ width: "100%", height: "auto" }}
+      />
+      <MenuList>
+        {menuLabels.map(label => (
+          <MenuEntry key={label}>{label}</MenuEntry>
+        ))}
+      </MenuList>
+      <LogoutTab>
+        <MenuLabel>log out</MenuLabel>
+        <MenuIcon className="material-icons">exit_to_app</MenuIcon>
+      </LogoutTab>
     </MenuDrawerWrapper>
     <MenuDrawerOverlay onClick={toggleVisibility} isVisible={isVisible} />
   </>
