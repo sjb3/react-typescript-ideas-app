@@ -12,6 +12,7 @@ import { BOUNCE_IT_TOKEN_KEY } from "./auth/auth.api";
 import { AddIdeasPage } from "./AddIdeas/AddIdeasPage";
 import { createGlobalStyle } from "styled-components";
 import { MyAccountPage } from "./MyAccount/MyAccountPage";
+import Api from "./common/Api";
 // import RoutesUrls from "./utils/routesUrls";
 
 const GlobalStyle = createGlobalStyle`
@@ -53,6 +54,8 @@ const routes = mount({
     view: <MyAccountPage />
   })
 });
+
+Api.init();
 
 ReactDOM.render(
   <>
