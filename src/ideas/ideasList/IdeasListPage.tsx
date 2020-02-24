@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Layout } from "../Layout/Layout";
-import { Idea } from "../common/types";
-import Api from "../common/Api";
+import { Layout } from "../../Layout/Layout";
+import { Idea } from "../../common/types";
+import Api from "../../common/Api";
 import styled from "styled-components";
 import { IdeaRow } from "./ideaRow";
 
@@ -26,6 +26,7 @@ export const IdeasPage = () => {
         <h2>Ideas List</h2>
         {ideas.map(idea => (
           <IdeaRow
+            key={idea.id}
             {...idea}
             upvote={id => {}}
             downvote={id => {}}

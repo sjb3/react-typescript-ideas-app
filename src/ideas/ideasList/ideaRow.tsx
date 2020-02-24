@@ -1,7 +1,8 @@
 import React from "react";
-import { Idea } from "../common/types";
+import { Idea } from "../../common/types";
 import styled from "styled-components";
-import { ColorSet } from "../ColorSet";
+import { ColorSet } from "../../ColorSet";
+import { Vote } from "./vote";
 
 const IdeaRowWrapper = styled.div`
   border-bottom: 1px solid ${ColorSet.DARK_GREY};
@@ -46,8 +47,26 @@ type Props = Idea & {
   bookmark: (id: string) => void;
 };
 
-export const IdeaRow: React.FC<Props> = ({ idea, description }) => (
+export const IdeaRow: React.FC<Props> = ({
+  idea,
+  description,
+  upvote,
+  downvote,
+  id
+}) => (
   <IdeaRowWrapper>
+    <Vote
+      iconName="add_circle"
+      // voteNumber="1"
+      ideaId={id}
+      onAddVote={(id: any) => console.log(id)}
+    />
+    <Vote
+      iconName="remove_circle"
+      // voteNumber="1"
+      ideaId={id}
+      onAddVote={(id: any) => console.log(id)}
+    />
     <DescriptionWrapper>
       <h4>{idea}</h4>
       <p>{description}</p>

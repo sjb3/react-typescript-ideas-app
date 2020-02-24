@@ -21,6 +21,7 @@ const MenuDrawerWrapper = styled.div<isVisibleDiv>`
 `;
 
 const MenuDrawerOverlay = styled.div<isVisibleDiv>`
+  pointer-events: ${props => (props.isVisible ? "all" : "none")};
   position: fixed;
   width: 100vw;
   height: 100%;
