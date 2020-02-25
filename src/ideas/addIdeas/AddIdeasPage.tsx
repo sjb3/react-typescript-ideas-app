@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "../../Layout/Layout";
 import styled from "styled-components";
 import { ColorSet } from "../../ColorSet";
+import { AddPhoto } from "./AddPhotos";
 
 const AddIdeaPageWrapper = styled.div`
   margin: 0 auto;
@@ -35,8 +36,8 @@ const TitleInput = styled.input`
   outline: none;
 
   ::placeholder {
-    font-style: italic;
-    font-family: "Dancing Script";
+    font-weight: bold;
+    font-family: "Cedarville Cursive";
   }
 `;
 
@@ -50,21 +51,29 @@ const DescTextArea = styled.textarea`
   margin-top: 10px;
 
   ::placeholder {
-    font-style: italic;
-    font-family: "Dancing Script";
+    font-weight: bold;
+    font-family: "Cedarville Cursive";
   }
 `;
 
 const SubmitButton = styled.button`
-  border: none;
-  background: ${ColorSet.WARM_SAND};
+  /* border: none; */
   padding: 8px 10px;
   cursor: pointer;
+  border: 1px solid ${ColorSet.DARK_GREY};
 
   &:hover {
-    background: ${ColorSet.PALE_PINK};
+    background: ${ColorSet.SALMON};
   }
 `;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+  align-items: center;
+`;
+
 export const AddIdeasPage = () => (
   <Layout>
     <AddIdeaPageWrapper>
@@ -73,10 +82,15 @@ export const AddIdeasPage = () => (
         <Column>
           <TitleInput placeholder="Create an idea..." name="idea" />
           <DescTextArea placeholder="Share wih your thoughts" name="desc" />
+          <Row>
+            <AddPhoto />
+            <AddPhoto />
+            <AddPhoto />
+            <SubmitButton type="submit">Submit Idea</SubmitButton>
+          </Row>
         </Column>
         <Column>2</Column>
       </TwoColumneForm>
-      <SubmitButton type="submit">Submit Idea</SubmitButton>
     </AddIdeaPageWrapper>
   </Layout>
 );
