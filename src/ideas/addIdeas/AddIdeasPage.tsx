@@ -3,6 +3,7 @@ import { Layout } from "../../Layout/Layout";
 import styled from "styled-components";
 import { ColorSet } from "../../ColorSet";
 import { AddPhoto } from "./AddPhotos";
+import { CustomSelect } from "./CustomSelect";
 
 const AddIdeaPageWrapper = styled.div`
   margin: 0 auto;
@@ -89,7 +90,8 @@ export const AddIdeasPage = () => (
             <SubmitButton type="submit">Submit Idea</SubmitButton>
           </Row>
         </Column>
-        <Column>2</Column>
+        <Column></Column>
+        <CustomSelect />
       </TwoColumneForm>
     </AddIdeaPageWrapper>
   </Layout>
